@@ -74,7 +74,7 @@ class FitCalculatorTest {
     }
 
     @ParameterizedTest(name = "{0} weight, {1} height")
-    @CsvFileSource(resources = "data.csv", numLinesToSkip = 1)
+    @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
     void isBMICorrect_shouldReturnFalse_forDataFromFile(double weight, double height) {
         
         //when
