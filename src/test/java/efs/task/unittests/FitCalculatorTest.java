@@ -54,8 +54,10 @@ class FitCalculatorTest {
     void shouldReturnTrue_whenBMIIsCorrect(double weight) {
         //given
         double height = 1.74;
+        
         //when
         boolean result = FitCalculator.isBMICorrect(weight, height);
+        
         //then
         assertTrue(result);
     }
@@ -63,8 +65,10 @@ class FitCalculatorTest {
     @ParameterizedTest(name = "{0} weight, {1} height")
     @CsvSource({"60.0, 2.0", "24.5, 1.35", "50.3, 1.68"})
     void isBMICorrect_shouldReturnFalse_forCsvSourceValues(double weight, double height) {
+        
         //when
         boolean result = FitCalculator.isBMICorrect(weight, height);
+        
         //then
         assertFalse(result);
     }
@@ -72,20 +76,25 @@ class FitCalculatorTest {
     @ParameterizedTest(name = "{0} weight, {1} height")
     @CsvFileSource(resources = "data.csv", numLinesToSkip = 1)
     void isBMICorrect_shouldReturnFalse_forDataFromFile(double weight, double height) {
+        
         //when
         boolean result = FitCalculator.isBMICorrect(weight, height);
+        
         //then
         assertFalse(result);
     }
 
     @Test
     void findUserWithTheWorstBMI_shouldReturnProperUser_forListFromTestConstants() {
+        
         //given
         List<User> users = TestConstants.TEST_USERS_LIST;
+        
         //when
         User actualValues = FitCalculator.findUserWithTheWorstBMI(users);
         double expectedWeight = 97.3;
         double expectedHeight = 1.79;
+        
         //then
         assertAll(
                 "Should return user with the worst BMI",
@@ -96,18 +105,23 @@ class FitCalculatorTest {
 
     @Test
     void findUserWithTheWorstBMI_shouldReturnNull_forEmptyList() {
+        
         //when
         User result = FitCalculator.findUserWithTheWorstBMI(Collections.emptyList());
+       
         //then
         assertNull(result);
     }
 
     @Test
     void calculateBMIScore_shouldReturnCorrectList_forListFromTestConstants() {
+        
         //given
         double[] expectedBMI = TestConstants.TEST_USERS_BMI_SCORE;
+        
         //when
         double[] calculatedBMI = FitCalculator.calculateBMIScore(TestConstants.TEST_USERS_LIST);
+        
         //then
         assertArrayEquals(expectedBMI, calculatedBMI);
     }
